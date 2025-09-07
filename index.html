@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Image Editor</title>
+    <link rel="stylesheet" href="index.css" />
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <main>
+      <header>
+        <h1><i class="fa-solid fa-image" aria-hidden="true"></i> AI Image Editor</h1>
+        <p>Upload an image and describe the changes you want to see.</p>
+      </header>
+      <div class="container">
+        <div class="controls-panel">
+          <div class="control-group">
+            <label for="image-upload" class="upload-label">
+              <div id="image-preview-container">
+                <img id="image-preview" src="#" alt="Your uploaded image" style="display: none;" />
+                <div id="upload-placeholder">
+                  <i class="fa-solid fa-upload"></i>
+                  <span>Click to upload image</span>
+                </div>
+              </div>
+            </label>
+            <input type="file" id="image-upload" accept="image/*" aria-label="Upload your image" />
+          </div>
+
+          <div class="control-group">
+            <label for="prompt-input">Prompt</label>
+            <textarea
+              id="prompt-input"
+              placeholder="e.g., Make the sky purple with two moons"
+              rows="4"
+              aria-label="Enter your editing prompt"
+            ></textarea>
+          </div>
+
+          <button id="generate-btn" disabled>
+            <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+            Generate
+          </button>
+        </div>
+        <div class="result-panel">
+          <div id="result-container">
+            <p id="result-placeholder">Your edited image will appear here.</p>
+            <img id="result-image" src="#" alt="Generated image" style="display:none;" />
+          </div>
+          <div id="loader" class="hidden">
+            <div class="spinner"></div>
+            <p>Generating your image... This may take a moment.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
